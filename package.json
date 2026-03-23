@@ -1,0 +1,23 @@
+{
+  "name": "wxo-code-agent",
+  "version": "1.0.0",
+  "description": "watsonx.orchestrate ADK agent development workspace",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JOOCHANN/wxO_using_Bob.git"
+  },
+  "keywords": [
+    "watsonx",
+    "orchestrate",
+    "adk",
+    "agent"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {}
+}
