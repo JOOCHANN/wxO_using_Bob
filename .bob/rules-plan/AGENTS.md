@@ -1,53 +1,53 @@
 # watsonx.orchestrate ADK - Plan Mode 가이드
 
-## 프로젝트 개요
+## 📋 Plan 모드 특징
 
-이 프로젝트는 **watsonx.orchestrate ADK를 MCP 서버로 연동**하여 AI 어시스턴트가 실시간으로 공식 문서를 참조할 수 있도록 합니다.
+Plan 모드는 프로젝트 계획과 전략 수립에 특화되어 있습니다:
 
-## Plan 모드 특징
-- 프로젝트 계획 및 아키텍처 설계
-- 작업 분해 및 우선순위 설정
-- 리소스 할당 및 일정 관리
-- 전략적 의사결정 지원
+- ✅ 프로젝트 계획 및 아키텍처 설계
+- ✅ 작업 분해 및 우선순위 설정
+- ✅ 리소스 할당 및 일정 관리
+- ✅ 전략적 의사결정 지원
+- ✅ 리스크 분석 및 대응 방안
+- ❌ 코드 실행 불가
+- ❌ 파일 수정 불가
 
-## MCP 서버 연결
+## 🎯 주요 작업
 
-### 연결된 MCP 서버
-- **서버명**: `watsonx-orchestrate-adk-docs`
-- **도구**: `search_ibm_watsonx_orchestrate_adk`
+### 프로젝트 계획
+- 요구사항 분석 및 정리
+- 기능 우선순위 설정
+- 마일스톤 정의
+- 일정 계획 수립
 
-### 사용 방법
-```xml
-<use_mcp_tool>
-<server_name>watsonx-orchestrate-adk-docs</server_name>
-<tool_name>search_ibm_watsonx_orchestrate_adk</tool_name>
-<arguments>
-{
-  "query": "검색할 내용",
-  "version": "v0.7"
-}
-</arguments>
-</use_mcp_tool>
-```
+### 아키텍처 설계
+- 시스템 구조 설계
+- 기술 스택 선정
+- 컴포넌트 설계
+- 데이터 모델링
 
-## 환경 변수
+### 작업 분해
+- 큰 작업을 작은 단위로 분해
+- 작업 간 의존성 파악
+- 병렬 처리 가능한 작업 식별
+- 작업 순서 최적화
 
-프로젝트 루트의 `.env` 파일에 다음 변수들이 설정되어 있습니다:
-- `WO_DEVELOPER_EDITION_SOURCE`: orchestrate
-- `WO_INSTANCE`: watsonx.orchestrate 인스턴스 URL
-- `WO_API_KEY`: API 인증 키
+### 리스크 관리
+- 잠재적 문제점 식별
+- 리스크 평가 및 우선순위
+- 대응 방안 수립
+- 백업 계획 마련
 
-**중요**: `.env` 파일은 민감한 정보를 포함하므로 절대 Git에 커밋하지 않습니다.
+## 💡 활용 팁
 
-## 주요 참고 문서
+- 명확한 목표와 제약사항을 제시하면 더 나은 계획을 수립할 수 있습니다
+- 현재 리소스와 기술 수준을 고려한 현실적인 계획을 제안합니다
+- 단계별 검증 포인트를 포함하여 진행 상황을 추적할 수 있습니다
 
-- **Developer Portal**: https://developer.watson-orchestrate.ibm.com/
-- **GitHub Repository**: https://github.com/ibm/ibm-watsonx-orchestrate-adk/
-- **프로젝트 GitHub**: https://github.com/JOOCHANN/wxO_using_Bob
+## 📖 참고 문서
 
-## 개발 시 주의사항
-
-- `.env` 파일은 절대 Git에 커밋하지 않음 (이미 .gitignore에 포함됨)
-- API Key는 민감 정보이므로 안전하게 관리
-- MCP 서버를 통해 최신 문서 정보 확인
-- 모든 코드 변경사항은 GitHub 저장소에서 관리
+공통 정보는 `.bob/COMMON.md`를 참조하세요:
+- 프로젝트 개요
+- 환경 변수 설정
+- 주요 참고 문서
+- 보안 주의사항

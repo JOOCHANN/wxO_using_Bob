@@ -1,53 +1,46 @@
 # watsonx.orchestrate ADK - Ask Mode 가이드
 
-## 프로젝트 개요
+## ❓ Ask 모드 특징
 
-이 프로젝트는 **watsonx.orchestrate ADK를 MCP 서버로 연동**하여 AI 어시스턴트가 실시간으로 공식 문서를 참조할 수 있도록 합니다.
+Ask 모드는 정보 검색과 문서 참조에 특화되어 있습니다:
 
-## Ask 모드 특징
-- 정보 검색 및 문서 참조에 특화
-- 코드 실행 없이 질문에 답변
-- 프로젝트 구조 및 아키텍처 설명
-- 개발 가이드 및 베스트 프랙티스 제공
+- ✅ 정보 검색 및 문서 참조
+- ✅ 프로젝트 구조 및 아키텍처 설명
+- ✅ 개발 가이드 및 베스트 프랙티스 제공
+- ✅ 코드 분석 및 설명
+- ❌ 코드 실행 불가
+- ❌ 파일 수정 불가
 
-## MCP 서버 연결
+## 🔍 주요 작업
 
-### 연결된 MCP 서버
-- **서버명**: `watsonx-orchestrate-adk-docs`
-- **도구**: `search_ibm_watsonx_orchestrate_adk`
+### 정보 제공
+- 프로젝트 구조 설명
+- 코드 로직 분석
+- API 사용법 안내
+- 설정 파일 해석
 
-### 사용 방법
-```xml
-<use_mcp_tool>
-<server_name>watsonx-orchestrate-adk-docs</server_name>
-<tool_name>search_ibm_watsonx_orchestrate_adk</tool_name>
-<arguments>
-{
-  "query": "검색할 내용",
-  "version": "v0.7"
-}
-</arguments>
-</use_mcp_tool>
-```
+### 문서 참조
+- 공식 문서 검색
+- 베스트 프랙티스 제안
+- 예제 코드 제공
+- 트러블슈팅 가이드
 
-## 환경 변수
+### 아키텍처 설명
+- 시스템 구조 개요
+- 컴포넌트 간 관계
+- 데이터 흐름 설명
+- 디자인 패턴 설명
 
-프로젝트 루트의 `.env` 파일에 다음 변수들이 설정되어 있습니다:
-- `WO_DEVELOPER_EDITION_SOURCE`: orchestrate
-- `WO_INSTANCE`: watsonx.orchestrate 인스턴스 URL
-- `WO_API_KEY`: API 인증 키
+## 💡 활용 팁
 
-**중요**: `.env` 파일은 민감한 정보를 포함하므로 절대 Git에 커밋하지 않습니다.
+- 구체적인 질문을 하면 더 정확한 답변을 받을 수 있습니다
+- 코드 스니펫을 포함하면 맥락을 이해하는데 도움이 됩니다
+- 에러 메시지를 공유하면 문제 해결에 유용합니다
 
-## 주요 참고 문서
+## 📖 참고 문서
 
-- **Developer Portal**: https://developer.watson-orchestrate.ibm.com/
-- **GitHub Repository**: https://github.com/ibm/ibm-watsonx-orchestrate-adk/
-- **프로젝트 GitHub**: https://github.com/JOOCHANN/wxO_using_Bob
-
-## 개발 시 주의사항
-
-- `.env` 파일은 절대 Git에 커밋하지 않음 (이미 .gitignore에 포함됨)
-- API Key는 민감 정보이므로 안전하게 관리
-- MCP 서버를 통해 최신 문서 정보 확인
-- 모든 코드 변경사항은 GitHub 저장소에서 관리
+공통 정보는 `.bob/COMMON.md`를 참조하세요:
+- 프로젝트 개요
+- 환경 변수 설정
+- 주요 참고 문서
+- 보안 주의사항

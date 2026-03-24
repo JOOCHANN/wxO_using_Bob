@@ -1,31 +1,44 @@
 # watsonx.orchestrate ADK - Code Mode 가이드
 
-## 프로젝트 개요
+## 💻 Code 모드 특징
 
-이 프로젝트는 **watsonx.orchestrate ADK를 MCP 서버로 연동**하여 AI 어시스턴트가 실시간으로 공식 문서를 참조할 수 있도록 합니다.
+Code 모드는 파일 시스템 작업과 명령 실행에 특화되어 있습니다:
 
-## 코드 모드 특징
-- MCP 및 Browser 도구 사용 불가
-- 파일 시스템 작업 및 명령 실행에 집중
-- 에이전트 코드 구현 및 스킬 개발
+- ✅ 파일 읽기/쓰기/수정
+- ✅ 명령어 실행 (npm, python 등)
+- ✅ 에이전트 코드 구현
+- ✅ 스킬 개발 및 테스트
+- ❌ MCP 도구 사용 불가
+- ❌ Browser 도구 사용 불가
 
-## 환경 변수
+## 🔧 주요 작업
 
-프로젝트 루트의 `.env` 파일에 다음 변수들이 설정되어 있습니다:
-- `WO_DEVELOPER_EDITION_SOURCE`: orchestrate
-- `WO_INSTANCE`: watsonx.orchestrate 인스턴스 URL
-- `WO_API_KEY`: API 인증 키
+### 에이전트 개발
+- TypeScript/JavaScript로 에이전트 코드 작성
+- 로컬 테스트 및 디버깅
+- 패키지 의존성 관리
 
-**중요**: `.env` 파일은 민감한 정보를 포함하므로 절대 Git에 커밋하지 않습니다.
+### 스킬 구현
+- 새로운 스킬 함수 작성
+- 기존 스킬 수정 및 개선
+- 단위 테스트 작성
 
-## 주요 참고 문서
+### 명령 실행
+```bash
+# 개발 서버 실행
+npm run dev
 
-- **Developer Portal**: https://developer.watson-orchestrate.ibm.com/
-- **GitHub Repository**: https://github.com/ibm/ibm-watsonx-orchestrate-adk/
-- **프로젝트 GitHub**: https://github.com/JOOCHANN/wxO_using_Bob
+# 테스트 실행
+npm test
 
-## 개발 시 주의사항
+# 빌드
+npm run build
+```
 
-- `.env` 파일은 절대 Git에 커밋하지 않음 (이미 .gitignore에 포함됨)
-- 민감한 정보는 환경 변수로 관리
-- 모든 코드 변경사항은 GitHub 저장소에서 관리
+## 📖 참고 문서
+
+공통 정보는 `.bob/COMMON.md`를 참조하세요:
+- 프로젝트 개요
+- 환경 변수 설정
+- 주요 참고 문서
+- 보안 주의사항

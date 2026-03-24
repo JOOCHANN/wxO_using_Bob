@@ -1,22 +1,25 @@
 # watsonx.orchestrate ADK - Advance Mode 가이드
 
-## 프로젝트 개요
+## 🚀 Advance 모드 특징
 
-이 프로젝트는 **watsonx.orchestrate ADK를 MCP 서버로 연동**하여 AI 어시스턴트가 실시간으로 공식 문서를 참조할 수 있도록 합니다.
+Advance 모드는 고급 기능과 외부 통합에 특화되어 있습니다:
 
-## Advance 모드 특징
-- MCP 및 Browser 도구 사용 가능
-- 외부 API 및 서비스 통합
-- 복잡한 워크플로우 구현
-- 고급 에이전트 기능 개발
+- ✅ MCP 도구 사용 가능
+- ✅ Browser 도구 사용 가능
+- ✅ 외부 API 및 서비스 통합
+- ✅ 복잡한 워크플로우 구현
+- ✅ 파일 시스템 작업
+- ✅ 명령어 실행
 
-## MCP 서버 연결
+## 🔌 MCP 서버 연결
 
 ### 연결된 MCP 서버
 - **서버명**: `watsonx-orchestrate-adk-docs`
 - **도구**: `search_ibm_watsonx_orchestrate_adk`
 
 ### 사용 방법
+ADK 문서를 검색할 때 다음과 같이 사용합니다:
+
 ```xml
 <use_mcp_tool>
 <server_name>watsonx-orchestrate-adk-docs</server_name>
@@ -30,24 +33,27 @@
 </use_mcp_tool>
 ```
 
-## 환경 변수
+## 🔧 주요 작업
 
-프로젝트 루트의 `.env` 파일에 다음 변수들이 설정되어 있습니다:
-- `WO_DEVELOPER_EDITION_SOURCE`: orchestrate
-- `WO_INSTANCE`: watsonx.orchestrate 인스턴스 URL
-- `WO_API_KEY`: API 인증 키
+### 외부 API 통합
+- watsonx.orchestrate API 호출
+- 서드파티 서비스 연동
+- 인증 및 권한 관리
 
-**중요**: `.env` 파일은 민감한 정보를 포함하므로 절대 Git에 커밋하지 않습니다.
+### 복잡한 워크플로우
+- 다단계 작업 자동화
+- 조건부 로직 구현
+- 에러 핸들링 및 재시도
 
-## 주요 참고 문서
+### 문서 검색 및 참조
+- MCP를 통한 실시간 문서 검색
+- 최신 API 정보 확인
+- 베스트 프랙티스 참조
 
-- **Developer Portal**: https://developer.watson-orchestrate.ibm.com/
-- **GitHub Repository**: https://github.com/ibm/ibm-watsonx-orchestrate-adk/
-- **프로젝트 GitHub**: https://github.com/JOOCHANN/wxO_using_Bob
+## 📖 참고 문서
 
-## 개발 시 주의사항
-
-- `.env` 파일은 절대 Git에 커밋하지 않음 (이미 .gitignore에 포함됨)
-- API Key는 민감 정보이므로 안전하게 관리
-- MCP 서버를 통해 최신 문서 정보 확인
-- 모든 코드 변경사항은 GitHub 저장소에서 관리
+공통 정보는 `.bob/COMMON.md`를 참조하세요:
+- 프로젝트 개요
+- 환경 변수 설정
+- 주요 참고 문서
+- 보안 주의사항

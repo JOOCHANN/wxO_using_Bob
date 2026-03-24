@@ -1,51 +1,35 @@
 # AGENTS.md
 
-This file provides guidance to agents when working with code in this repository.
+이 파일은 AI 에이전트가 프로젝트에서 작업할 때 참조하는 가이드입니다.
 
-## 프로젝트 개요
+## 📁 모드별 가이드 위치
 
-이 프로젝트는 **watsonx.orchestrate ADK를 MCP 서버로 연동**하여 AI 어시스턴트가 실시간으로 공식 문서를 참조할 수 있도록 합니다.
+각 모드에 특화된 상세 가이드는 다음 위치에서 확인하세요:
 
-## MCP 서버 연결
+- **💻 Code 모드**: `.bob/rules-code/AGENTS.md`
+  - 파일 시스템 작업 및 명령 실행
+  - 에이전트 코드 구현 및 스킬 개발
 
-### 연결된 MCP 서버
-- **서버명**: `watsonx-orchestrate-adk-docs`
-- **도구**: `search_ibm_watsonx_orchestrate_adk`
+- **🚀 Advance 모드**: `.bob/rules-advance/AGENTS.md`
+  - MCP 및 Browser 도구 사용
+  - 외부 API 및 서비스 통합
+  - 복잡한 워크플로우 구현
 
-### 사용 방법
-AI 어시스턴트는 다음과 같이 ADK 문서를 검색할 수 있습니다:
+- **❓ Ask 모드**: `.bob/rules-ask/AGENTS.md`
+  - 정보 검색 및 문서 참조
+  - 프로젝트 구조 및 아키텍처 설명
+  - 개발 가이드 및 베스트 프랙티스
 
-```xml
-<use_mcp_tool>
-<server_name>watsonx-orchestrate-adk-docs</server_name>
-<tool_name>search_ibm_watsonx_orchestrate_adk</tool_name>
-<arguments>
-{
-  "query": "검색할 내용",
-  "version": "v0.7"
-}
-</arguments>
-</use_mcp_tool>
-```
+- **📋 Plan 모드**: `.bob/rules-plan/AGENTS.md`
+  - 프로젝트 계획 및 아키텍처 설계
+  - 작업 분해 및 우선순위 설정
+  - 전략적 의사결정 지원
 
-## 환경 변수
+## 📚 공통 정보
 
-프로젝트 루트의 `.env` 파일에 다음 변수들이 설정되어 있습니다:
-- `WO_DEVELOPER_EDITION_SOURCE`: orchestrate
-- `WO_INSTANCE`: watsonx.orchestrate 인스턴스 URL
-- `WO_API_KEY`: API 인증 키
-
-**중요**: `.env` 파일은 민감한 정보를 포함하므로 절대 Git에 커밋하지 않습니다.
-
-## 주요 참고 문서
-
-- **Developer Portal**: https://developer.watson-orchestrate.ibm.com/
-- **GitHub Repository**: https://github.com/ibm/ibm-watsonx-orchestrate-adk/
-- **프로젝트 GitHub**: https://github.com/JOOCHANN/wxO_using_Bob
-
-## 개발 시 주의사항
-
-- `.env` 파일은 절대 Git에 커밋하지 않음 (이미 .gitignore에 포함됨)
-- API Key는 민감 정보이므로 안전하게 관리
-- MCP 서버를 통해 최신 문서 정보 확인
-- 모든 코드 변경사항은 GitHub 저장소에서 관리
+프로젝트 전반에 적용되는 공통 정보는 다음 파일을 참조하세요:
+- **공통 가이드**: `.bob/COMMON.md`
+  - 프로젝트 개요
+  - 환경 변수 설정
+  - 주요 참고 문서
+  - 보안 및 개발 주의사항
