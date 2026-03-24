@@ -1,160 +1,53 @@
 # watsonx.orchestrate ADK - Advance Mode 가이드
 
+## 프로젝트 개요
+
+이 프로젝트는 **watsonx.orchestrate ADK를 MCP 서버로 연동**하여 AI 어시스턴트가 실시간으로 공식 문서를 참조할 수 있도록 합니다.
+
 ## Advance 모드 특징
 - MCP 및 Browser 도구 사용 가능
 - 외부 API 및 서비스 통합
 - 복잡한 워크플로우 구현
 - 고급 에이전트 기능 개발
 
-## MCP (Model Context Protocol) 통합
+## MCP 서버 연결
 
-### MCP 서버 연결
-```javascript
-// MCP 서버와의 통신 예제
-const mcpClient = require('@ibm/wxo-mcp-client');
+### 연결된 MCP 서버
+- **서버명**: `watsonx-orchestrate-adk-docs`
+- **도구**: `search_ibm_watsonx_orchestrate_adk`
 
-async function connectToMCP() {
-  const client = new mcpClient.MCPClient({
-    endpoint: process.env.MCP_ENDPOINT,
-    apiKey: process.env.MCP_API_KEY
-  });
-  
-  await client.connect();
-  return client;
+### 사용 방법
+```xml
+<use_mcp_tool>
+<server_name>watsonx-orchestrate-adk-docs</server_name>
+<tool_name>search_ibm_watsonx_orchestrate_adk</tool_name>
+<arguments>
+{
+  "query": "검색할 내용",
+  "version": "v0.7"
 }
+</arguments>
+</use_mcp_tool>
 ```
 
-### 외부 API 통합
-```javascript
-// skills/api-integration-skill.js
-const axios = require('axios');
+## 환경 변수
 
-module.exports = {
-  name: 'api-integration',
-  description: '외부 API 호출 스킬',
-  parameters: {
-    type: 'object',
-    properties: {
-      endpoint: { type: 'string', description: 'API 엔드포인트' },
-      method: { type: 'string', enum: ['GET', 'POST', 'PUT', 'DELETE'] },
-      data: { type: 'object', description: '요청 데이터' }
-    },
-    required: ['endpoint', 'method']
-  },
-  execute: async (params) => {
-    try {
-      const response = await axios({
-        method: params.method,
-        url: params.endpoint,
-        data: params.data,
-        timeout: 30000
-      });
-      
-      return {
-        success: true,
-        data: response.data,
-        status: response.status
-      };
-    } catch (error) {
-      return {
-        success: false,
-        error: error.message,
-        status: error.response?.status
-      };
-    }
-  }
-};
-```
+프로젝트 루트의 `.env` 파일에 다음 변수들이 설정되어 있습니다:
+- `WO_DEVELOPER_EDITION_SOURCE`: orchestrate
+- `WO_INSTANCE`: watsonx.orchestrate 인스턴스 URL
+- `WO_API_KEY`: API 인증 키
 
-## Browser 자동화
+**중요**: `.env` 파일은 민감한 정보를 포함하므로 절대 Git에 커밋하지 않습니다.
 
-### Puppeteer 통합
-```javascript
-// skills/web-scraping-skill.js
-const puppeteer = require('puppeteer');
+## 주요 참고 문서
 
-module.exports = {
-  name: 'web-scraping',
-  description: '웹 페이지 스크래핑',
-  parameters: {
-    type: 'object',
-    properties: {
-      url: { type: 'string', description: '대상 URL' },
-      selector: { type: 'string', description: 'CSS 선택자' }
-    },
-    required: ['url', 'selector']
-  },
-  execute: async (params) => {
-    const browser = await puppeteer.launch({ headless: true });
-    const page = await browser.newPage();
-    
-    try {
-      await page.goto(params.url, { waitUntil: 'networkidle2' });
-      const content = await page.$eval(params.selector, el => el.textContent);
-      
-      return { success: true, content };
-    } catch (error) {
-      return { success: false, error: error.message };
-    } finally {
-      await browser.close();
-    }
-  }
-};
-```
+- **Developer Portal**: https://developer.watson-orchestrate.ibm.com/
+- **GitHub Repository**: https://github.com/ibm/ibm-watsonx-orchestrate-adk/
+- **프로젝트 GitHub**: https://github.com/JOOCHANN/wxO_using_Bob
 
-## 복잡한 워크플로우
+## 개발 시 주의사항
 
-### 다단계 프로세스 구현
-```javascript
-// skills/workflow-skill.js
-module.exports = {
-  name: 'complex-workflow',
-  description: '다단계 워크플로우 실행',
-  execute: async (params) => {
-    const results = [];
-    
-    // Step 1: 데이터 수집
-    const data = await collectData(params.source);
-    results.push({ step: 'collect', status: 'success', data });
-    
-    // Step 2: 데이터 처리
-    const processed = await processData(data);
-    results.push({ step: 'process', status: 'success', data: processed });
-    
-    // Step 3: 결과 저장
-    await saveResults(processed);
-    results.push({ step: 'save', status: 'success' });
-    
-    return { success: true, workflow: results };
-  }
-};
-```
-
-## 고급 기능
-
-### 상태 관리
-- 에이전트 세션 상태 유지
-- 컨텍스트 정보 저장 및 활용
-- 멀티턴 대화 지원
-
-### 에러 복구
-- 자동 재시도 메커니즘
-- Fallback 전략 구현
-- 부분 실패 처리
-
-### 성능 최적화
-- 캐싱 전략 적용
-- 병렬 처리 활용
-- 리소스 풀링
-
-## 보안 고려사항
-- API 키 및 인증 정보 안전한 관리
-- 입력 데이터 검증 및 sanitization
-- Rate limiting 구현
-- HTTPS 통신 강제
-
-## 테스트 전략
-- 단위 테스트: 개별 스킬 테스트
-- 통합 테스트: 전체 워크플로우 테스트
-- E2E 테스트: 실제 환경에서의 동작 확인
-- 부하 테스트: 성능 및 확장성 검증
+- `.env` 파일은 절대 Git에 커밋하지 않음 (이미 .gitignore에 포함됨)
+- API Key는 민감 정보이므로 안전하게 관리
+- MCP 서버를 통해 최신 문서 정보 확인
+- 모든 코드 변경사항은 GitHub 저장소에서 관리
